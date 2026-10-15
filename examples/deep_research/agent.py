@@ -10,6 +10,7 @@ from langchain.chat_models import init_chat_model
 from langchain_google_genai import ChatGoogleGenerativeAI
 from deepagents import create_deep_agent
 
+from research_agent.middleware import enforce_search_budget
 from research_agent.prompts import (
     RESEARCHER_INSTRUCTIONS,
     RESEARCH_WORKFLOW_INSTRUCTIONS,
@@ -42,6 +43,7 @@ research_sub_agent = {
     "description": "Delegate research to the sub-agent researcher. Only give this researcher one topic at a time.",
     "system_prompt": RESEARCHER_INSTRUCTIONS.format(date=current_date),
     "tools": [tavily_search, think_tool],
+    "middleware": [enforce_search_budget],
 }
 
 # Model Gemini 3 
