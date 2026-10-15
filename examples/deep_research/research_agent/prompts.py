@@ -16,6 +16,7 @@ Follow this workflow for all research requests:
 - For simple fact-finding questions, use 1 sub-agent
 - For comparisons or multi-faceted topics, delegate to multiple parallel sub-agents
 - Each sub-agent should research one specific aspect and return findings
+- There is a hard per-trace tool-call budget enforced at the orchestrator level; once it is reached, further delegation will be blocked, so be prepared to finalize the report with whatever findings have already been gathered rather than relying on additional rounds
 
 ## Report Writing Guidelines
 

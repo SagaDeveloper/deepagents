@@ -10,6 +10,7 @@ from langchain.chat_models import init_chat_model
 from langchain_google_genai import ChatGoogleGenerativeAI
 from deepagents import create_deep_agent
 
+from research_agent.middleware import enforce_trace_budget
 from research_agent.prompts import (
     RESEARCHER_INSTRUCTIONS,
     RESEARCH_WORKFLOW_INSTRUCTIONS,
@@ -56,4 +57,5 @@ agent = create_deep_agent(
     tools=[tavily_search, think_tool],
     system_prompt=INSTRUCTIONS,
     subagents=[research_sub_agent],
+    middleware=[enforce_trace_budget],
 )
